@@ -15,6 +15,7 @@ class TweetController extends Controller
     public function index()
     {
         //
+        return view('tweets.index');
     }
 
     /**
