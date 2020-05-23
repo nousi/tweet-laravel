@@ -11,4 +11,5 @@
 |
 */
 
+Route::get('/', 'TweetController@index');
 Route::resource('tweets', 'TweetController');
