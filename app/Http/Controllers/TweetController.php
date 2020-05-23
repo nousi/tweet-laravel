@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Tweet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TweetController extends Controller
 {
@@ -15,7 +16,9 @@ class TweetController extends Controller
     public function index()
     {
         //
-        return view('tweets.index');
+        $tweets = DB::table('tweets')
+                 ->get();
+        return view('tweets.index', compact('tweets'));
     }
 
     /**
