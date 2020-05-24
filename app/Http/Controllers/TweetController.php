@@ -43,7 +43,12 @@ class TweetController extends Controller
     public function store(Request $request)
     {
         //
-        
+        $tweet = new Tweet;
+        $tweet->title = $request->input('title');
+        $tweet->text = $request->input('text');
+        $tweet->save();
+        return redirect(route('tweets.index'));
+
     }
 
     /**
