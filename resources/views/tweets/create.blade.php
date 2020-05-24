@@ -29,7 +29,7 @@
       <label for="text" class="col-md-4 col-form-label text-md-right">投稿内容</label>
 
       <div class="col-md-6">
-          <textarea name="text" id="text" cols="30" rows="10" class="form-control @error('text') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="text"></textarea>
+          <textarea name="text" id="text" cols="30" rows="10" class="form-control @error('text') is-invalid @enderror" value="{{ old('text') }}" required autocomplete="text"></textarea>
           @error('text')
               <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
