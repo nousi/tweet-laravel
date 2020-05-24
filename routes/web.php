@@ -11,5 +11,10 @@
 |
 */
 
-Route::get('/', 'TweetController@index');
+Route::get('/', 'TweetController@index')->name('root');
 Route::resource('tweets', 'TweetController');
+Auth::routes();
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
