@@ -29,6 +29,9 @@ class TweetController extends Controller
     public function create()
     {
         //
+        $tweets = DB::table('tweets')
+                ->get();
+        return view('tweets.create', compact('tweets'));
     }
 
     /**
@@ -40,6 +43,7 @@ class TweetController extends Controller
     public function store(Request $request)
     {
         //
+        
     }
 
     /**

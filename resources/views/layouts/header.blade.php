@@ -26,6 +26,9 @@
                         </li>
                     @endif
                 @else
+                    <li class="nav-item">
+                      <a href="{{route('tweets.create')}}" class="btn btn-primary">新規投稿</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
@@ -35,7 +38,7 @@
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                {{ __('ログアウト') }}
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
