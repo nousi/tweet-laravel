@@ -15,7 +15,8 @@
       <div class="card-body">
         <h5 class="card-title">{{$tweet->title}}</h5>
         <p class="card-text">{{$tweet->text}}</p>
-        <a href="{{route('tweets.show')}}" class="btn btn-primary">もっと見る</a>
+
+        <a href="{{ route('tweets.show', $tweet->id) }}" class="btn btn-primary">もっと見る</a>
       </div>
     </div>
     @endforeach
