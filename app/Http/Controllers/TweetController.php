@@ -29,8 +29,6 @@ class TweetController extends Controller
     public function create()
     {
         //
-        $tweets = DB::table('tweets')
-                ->get();
         return view('tweets.create', compact('tweets'));
     }
 
@@ -89,7 +87,7 @@ class TweetController extends Controller
         $tweet->title = $request->title;
         $tweet->text = $request->text;
         $tweet->update();
-        return redirect('/');
+        return view('tweets.index');
     }
 
     /**
