@@ -11,10 +11,13 @@
 |
 */
 
+Auth::routes();
+Route::group(['middleware' => 'auth'], function()
+{
+    Route::resource('tweets', 'TweetController', [ 'except' => ['index', 'show']]);
+});
 Route::get('/', 'TweetController@index')->name('root');
-Route::resource('tweets', 'TweetController');
-Auth::routes();
-
-Auth::routes();
+Route::get('/tweets', 'TweetController@index')->name('tweets.index');
+Route::get('tweets/{id}', 'TweetController@show')->name('tweets.show');
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Model\Tweet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class TweetController extends Controller
 {
@@ -29,7 +30,7 @@ class TweetController extends Controller
     public function create()
     {
         //
-        return view('tweets.create', compact('tweets'));
+        return view('tweets.create');
     }
 
     /**
@@ -41,9 +42,11 @@ class TweetController extends Controller
     public function store(Request $request)
     {
         //
+        $user = Auth::user();
         $tweet = new Tweet;
         $tweet->title = $request->input('title');
         $tweet->text = $request->input('text');
+        $tweet->user_id = $user->id;
         $tweet->save();
         return redirect(route('tweets.index'));
 
@@ -58,8 +61,9 @@ class TweetController extends Controller
     public function show($id)
     {
         //
+        $user = Auth::user();
         $tweet = Tweet::find($id);
-        return view('tweets.show', compact('tweet'));
+        return view('tweets.show', compact('tweet', 'user'));
     }
 
     /**
@@ -71,7 +75,14 @@ class TweetController extends Controller
     public function edit(Tweet $tweet)
     {
         //
-        return view('tweets.edit', compact('tweet'));
+        
+        $user = Auth::user();
+        if ($user->id === $tweet->user_id) {
+            return view('tweets.edit', compact('tweet'));
+        } else {
+            // 投稿者のidとログインしているユーザーidに差異がある
+            return back()->with('flash_message', '投稿者でなければ編集できません');
+        }
     }
 
     /**
@@ -84,10 +95,16 @@ class TweetController extends Controller
     public function update(Request $request, Tweet $tweet)
     {
         //
-        $tweet->title = $request->title;
-        $tweet->text = $request->text;
-        $tweet->update();
-        return view('tweets.index');
+        $user = Auth::user();
+        if ($user->id === $tweet->user_id) {
+            $tweet->title = $request->title;
+            $tweet->text = $request->text;
+            $tweet->save();
+            return redirect(route('root'))->with('flash_message', '更新されました');
+        } else {
+            // ログインしていなかったら、Login画面を表示
+            return back()->with('flash_message', '投稿者でなければ編集できません');
+        }
     }
 
     /**
@@ -99,5 +116,13 @@ class TweetController extends Controller
     public function destroy(Tweet $tweet)
     {
         //
+        $user = Auth::user();
+        if ($user->id === $tweet->user_id) {
+            $tweet->delete();
+            return redirect(route('root'))->with('flash_message', '削除されました');
+        } else {
+            // ログインしていなかったら、Login画面を表示
+            return back()->with('flash_message', '投稿者でなければ削除できません');
+        }
     }
 }

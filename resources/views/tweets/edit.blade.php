@@ -8,8 +8,9 @@
 @endsection
 
 @section('content')
-<form method="PATCH" action="{{ route('tweets.update', $tweet) }}">
+<form method="post" action="{{ route('tweets.update', $tweet) }}">
   @csrf
+  @method('PATCH')
 
   <div class="form-group row">
       <label for="title" class="col-md-4 col-form-label text-md-right">タイトル</label>

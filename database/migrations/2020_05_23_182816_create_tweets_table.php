@@ -17,6 +17,10 @@ class CreateTweetsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title',45);
             $table->text('text', 400);
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')
+                  ->on('users')
+                  ->onDelete('cascade');
             $table->timestamps();
         });
     }
