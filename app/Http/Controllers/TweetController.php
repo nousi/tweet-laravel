@@ -70,10 +70,9 @@ class TweetController extends Controller
      * @param  \App\Model\Tweet  $tweet
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Tweet $tweet)
     {
         //
-        $tweet = Tweet::find($id);
         return view('tweets.edit', compact('tweet'));
     }
 
@@ -87,6 +86,10 @@ class TweetController extends Controller
     public function update(Request $request, Tweet $tweet)
     {
         //
+        $tweet->title = $request->title;
+        $tweet->text = $request->text;
+        $tweet->update();
+        return redirect('/');
     }
 
     /**
