@@ -14,13 +14,15 @@
     <div class="card-body">
       <h5 class="card-title">{{$tweet->title}}</h5>
       <p class="card-text">{{$tweet->text}}</p>
-      @if($tweet->user_id === $user->id)
-      <form method="post" action="{{ route('tweets.destroy', $tweet) }}">
-        @csrf
-        @method('DELETE')
-        <a href="{{ route('tweets.edit', $tweet) }}" class="btn btn-success btn-sm">編集</a>
-        <input type="submit" value="削除" class="btn btn-danger btn-sm" onclick='return confirm("削除してもよろしいですか？");'>
-      </form>
+      @if (Auth::check())
+        @if($tweet->user_id === $user->id)
+        <form method="post" action="{{ route('tweets.destroy', $tweet) }}">
+          @csrf
+          @method('DELETE')
+          <a href="{{ route('tweets.edit', $tweet) }}" class="btn btn-success btn-sm">編集</a>
+          <input type="submit" value="削除" class="btn btn-danger btn-sm" onclick='return confirm("削除してもよろしいですか？");'>
+        </form>
+        @endif
       @endif
     </div>
   </div>
