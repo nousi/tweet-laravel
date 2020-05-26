@@ -6,6 +6,7 @@ use App\Model\Tweet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\HTTP\Requests\StoreTweet;
 
 class TweetController extends Controller
 {
@@ -39,7 +40,7 @@ class TweetController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTweet $request)
     {
         //
         $user = Auth::user();
@@ -92,7 +93,7 @@ class TweetController extends Controller
      * @param  \App\Model\Tweet  $tweet
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tweet $tweet)
+    public function update(StoreTweet $request, Tweet $tweet)
     {
         //
         $user = Auth::user();

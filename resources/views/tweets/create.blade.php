@@ -18,9 +18,7 @@
           <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="title" autofocus>
 
           @error('title')
-              <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-              </span>
+                <div class="alert alert-danger">{{ $message }}</div>
           @enderror
       </div>
   </div>
@@ -31,9 +29,7 @@
       <div class="col-md-6">
           <textarea name="text" id="text" cols="30" rows="10" class="form-control @error('text') is-invalid @enderror" value="{{ old('text') }}" required autocomplete="text"></textarea>
           @error('text')
-              <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-              </span>
+                <div class="alert alert-danger">{{ $message }}</div>
           @enderror
       </div>
   </div>
