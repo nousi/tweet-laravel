@@ -20,6 +20,6 @@
       </div>
     </div>
     @endforeach
-    {{ $tweets->links() }}
+    <a href="{{ $tweets->nextPageUrl() }}" class="more-link"></a>
   </div>
 @endsection
