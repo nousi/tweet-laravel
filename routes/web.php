@@ -15,6 +15,7 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function()
 {
     Route::resource('tweets', 'TweetController', [ 'except' => ['index', 'show']]);
+    Route::resource('tweets.comments', 'CommentController', [ 'except' => ['index']]);
 });
 Route::get('/', 'TweetController@index')->name('root');
 Route::get('/tweets', 'TweetController@index')->name('tweets.index');
