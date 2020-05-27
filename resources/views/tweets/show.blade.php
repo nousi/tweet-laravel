@@ -50,14 +50,12 @@
     <table class="table">
   
       <tbody>
+        @foreach ($comments as $comment)
           <tr>
-              <td>Qiita</td>
+              <td>{{ $comment->text }}</td>
               <td>@Hanaq</td>
           </tr>
-          <tr>
-              <td>Qiita</td>
-              <td>@TaroQ</td>
-          </tr>
+        @endforeach
       </tbody>
     </table>
 

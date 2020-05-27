@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Tweet;
+use App\Model\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -65,7 +66,10 @@ class TweetController extends Controller
         //
         $user = Auth::user();
         $tweet = Tweet::find($id);
-        return view('tweets.show', compact('tweet', 'user'));
+        $comments = DB::table('comments')
+                    ->where('tweet_id', '=', $tweet->id)
+                    ->get();
+        return view('tweets.show', compact('tweet', 'user', 'comments'));
     }
 
     /**
