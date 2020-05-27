@@ -5027,7 +5027,11 @@ input[type=button].btn-block {
   overflow: hidden;
   position: relative;
 }
-.card-text::before  {
+.readmore-content {
+  overflow: hidden;
+  position: relative;
+}
+.readmore-content::before  {
   display: block;
   position: absolute;
   bottom: 0;
@@ -5142,7 +5146,7 @@ input[type=button].btn-block {
   .card-text {
     height: 104px;
   }
-  .card-text::before  {
+  .readmore-content::before  {
     /*以下グラデーションの色と高さ*/
     height: 50px;
   }
