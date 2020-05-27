@@ -23,6 +23,13 @@
           <input type="submit" value="削除" class="btn btn-danger btn-sm" onclick='return confirm("削除してもよろしいですか？");'>
         </form>
         @endif
+        <form>
+          <div class="form-group">
+            <label for="text">コメント</label>
+            <input type="text" class="form-control" id="comment" placeholder="コメント入力">
+          </div>
+          <button type="submit" class="btn btn-primary">投稿</button>
+        </form>
       @endif
     </div>
   </div>
