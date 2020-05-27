@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Model\Comment;
+use App\Model\Tweet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -36,16 +38,19 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Tweet $tweet)
     {
         //
         if (Auth::check()) {
             $user = Auth::user();
-            $tweet = 0;
             $comment = new Comment();
+            $text = $request->input('text');
             $comment->text = $request->input('text');
-            $comment->tweet_id = $request->input('tweet_id');
+            $comment->tweet_id = $tweet->id;
             $comment->user_id = $user->id;
+            $comment->save();
+            return back()->with('flash_message', 'コメントを投稿しました。');
+            
         } else {
             // ログインしていなかったら、ロールバック
             return back()->with('flash_message', 'コメントするにはログインする必要があります');

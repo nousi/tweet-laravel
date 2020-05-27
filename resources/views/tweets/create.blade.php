@@ -16,7 +16,6 @@
 
       <div class="col-md-6">
           <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="title" autofocus>
-
           @error('title')
                 <div class="alert alert-danger">{{ $message }}</div>
           @enderror

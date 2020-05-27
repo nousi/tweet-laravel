@@ -23,15 +23,44 @@
           <input type="submit" value="削除" class="btn btn-danger btn-sm" onclick='return confirm("削除してもよろしいですか？");'>
         </form>
         @endif
-        <form>
-          <div class="form-group">
-            <label for="text">コメント</label>
-            <input type="text" class="form-control" id="comment" placeholder="コメント入力">
-          </div>
-          <button type="submit" class="btn btn-primary">投稿</button>
-        </form>
       @endif
     </div>
+  </div>
+</div>
+<div class="container">
+  @if (Auth::check())
+  <form method="POST" action="{{ route('tweets.comments.store', $tweet) }}">
+    @csrf
+    <div class="form-group mt-1">
+      <input id="text" type="text" class="form-control @error('text') is-invalid @enderror" placeholder="コメントを入力" name="text" value="{{ old('text') }}" required autocomplete="text" autofocus>
+      <div class="col-md-6">
+          @error('text')
+                <div class="alert alert-danger">{{ $message }}</div>
+          @enderror
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">
+        投稿する
+    </button>
+        </div>
+    </div>
+  </form>
+  @endif
+  <div class="container">
+    <table class="table">
+  
+      <tbody>
+          <tr>
+              <td>Qiita</td>
+              <td>@Hanaq</td>
+          </tr>
+          <tr>
+              <td>Qiita</td>
+              <td>@TaroQ</td>
+          </tr>
+      </tbody>
+    </table>
+
   </div>
 </div>
 @endsection

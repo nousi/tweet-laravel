@@ -24,6 +24,11 @@
 <body>
   <div id="app">
     @include('layouts.header')
+    @if (session('flash_message'))
+        <div class="flash_message bg-success text-center py-2 ">
+            {{ session('flash_message') }}
+        </div>
+    @endif
     <main class="py-4">
       @yield('content')
     </main>

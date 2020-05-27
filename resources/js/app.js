@@ -1,3 +1,3 @@
 require('./bootstrap');
 require('./scroll');
-require('./sample');
+require('./flashmessage');
