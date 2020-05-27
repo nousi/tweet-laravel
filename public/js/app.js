@@ -37229,6 +37229,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./scroll */ "./resources/js/scroll.js");
 
+__webpack_require__(/*! ./sample */ "./resources/js/sample.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -37276,6 +37278,17 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/sample.js":
+/*!********************************!*\
+  !*** ./resources/js/sample.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+alert('CAUTION!!');
+
+/***/ }),
+
 /***/ "./resources/js/scroll.js":
 /*!********************************!*\
   !*** ./resources/js/scroll.js ***!
@@ -37284,9 +37297,10 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /***/ (function(module, exports) {
 
 $(document).on(function () {
+  console.log('OK');
   $('.jscroll').jscroll({
     // 無限に追加する要素は、どこに入れる？
-    contentSelector: '.cards',
+    contentSelector: '.jscroll',
     // 次のページにいくためのリンクの場所は？ ＞aタグの指定
     nextSelector: '.more-link',
     // 読み込み中の表示はどうする？
@@ -37308,13 +37322,15 @@ $(document).on(function () {
 /***/ }),
 
 /***/ 0:
-/*!*************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
-  \*************************************************************/
+/*!***************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/js/scroll.js ./resources/js/sample.js ./resources/sass/app.scss ***!
+  \***************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /Applications/MAMP/htdocs/tweet-laravel/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/tweet-laravel/resources/js/scroll.js */"./resources/js/scroll.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/tweet-laravel/resources/js/sample.js */"./resources/js/sample.js");
 module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/tweet-laravel/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
