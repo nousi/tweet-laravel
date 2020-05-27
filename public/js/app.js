@@ -37227,6 +37227,8 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./scroll */ "./resources/js/scroll.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -37271,6 +37273,26 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/scroll.js":
+/*!********************************!*\
+  !*** ./resources/js/scroll.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).on(function () {
+  $('.jscroll').jscroll({
+    // 無限に追加する要素は、どこに入れる？
+    contentSelector: '.cards',
+    // 次のページにいくためのリンクの場所は？ ＞aタグの指定
+    nextSelector: '.more-link',
+    // 読み込み中の表示はどうする？
+    loadingHtml: '読み込み中'
+  });
+});
 
 /***/ }),
 
