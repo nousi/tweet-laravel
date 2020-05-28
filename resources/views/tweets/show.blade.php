@@ -50,9 +50,10 @@
     <table class="table">
   
       <tbody>
-        @foreach ($comments as $comment)
+        @foreach ($tweet->comments as $comment)
           <tr>
               <td>{{ $comment->text }}</td>
+              <td>{{ $comment->user->name }}</td>
           </tr>
         @endforeach
       </tbody>

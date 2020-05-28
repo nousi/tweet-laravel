@@ -66,10 +66,7 @@ class TweetController extends Controller
         //
         $user = Auth::user();
         $tweet = Tweet::find($id);
-        $comments = DB::table('comments')
-                    ->where('tweet_id', '=', $tweet->id)
-                    ->get();
-        return view('tweets.show', compact('tweet', 'user', 'comments'));
+        return view('tweets.show', compact('tweet', 'user'));
     }
 
     /**
