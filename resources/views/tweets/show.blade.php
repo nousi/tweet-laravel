@@ -48,12 +48,18 @@
   @endif
   <div class="container">
     <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">name</th>
+          <th scope="col">comment</th>
+        </tr>
+      </thead>
   
       <tbody>
         @foreach ($tweet->comments as $comment)
           <tr>
+              <td width="30px">{{ $comment->user->name }}</td>
               <td>{{ $comment->text }}</td>
-              <td>{{ $comment->user->name }}</td>
           </tr>
         @endforeach
       </tbody>
