@@ -3,8 +3,9 @@ $(function() {
 });
 
 function get_data() {
+  console.log(window.location.host + "/comments")
   $.ajax({
-      url: "/comments",
+      url: window.location.host + "/comments",
       dataType: "json",
       success: data => {
           console.log(data);
