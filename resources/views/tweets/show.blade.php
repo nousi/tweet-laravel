@@ -53,7 +53,6 @@
         @foreach ($comments as $comment)
           <tr>
               <td>{{ $comment->text }}</td>
-              <td>@Hanaq</td>
           </tr>
         @endforeach
       </tbody>
