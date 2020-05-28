@@ -10,7 +10,7 @@ $factory->define(Tweet::class, function (Faker $faker) {
     return [
         //
         'title' => $faker->realText(30),
-        'text' => $faker->realText(200),
+        'text' => $faker->realText(),
         'user_id' => $faker->randomElement($userIDs),
     ];
 });
