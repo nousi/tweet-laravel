@@ -39,5 +39,6 @@
   @section('footer')
     @include('layouts.footer')
   @show
+  @yield('js')
 </body>
 </html>

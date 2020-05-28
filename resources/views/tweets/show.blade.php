@@ -68,3 +68,7 @@
   </div>
 </div>
 @endsection
+
+@section('js')
+<script src="{{ asset('js/comments.js') }}"></script>
+@endsection
