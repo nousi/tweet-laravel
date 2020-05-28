@@ -4,7 +4,7 @@ $(function() {
 
 function get_data() {
   $.ajax({
-      url: "result/ajax/",
+      url: "/comments",
       dataType: "json",
       success: data => {
           console.log(data);
