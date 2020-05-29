@@ -1,7 +1,16 @@
 $(function() {
+  function append_comment(comment){
+    var comment = (
+      (`<tr class="comment" data-id=${comment.id}>
+          <td width="30px">${comment.user.name}</td>
+          <td>${comment.text}}</td>
+        </tr>`
+      )
+    );
+    return comment
+  };
   var get_data =function (){
     var last_comment_id = $('.comment:last').data('id');
-    console.log(last_comment_id);
     $.ajax({
         url: "/comments",
         type: 'GET',
@@ -9,12 +18,15 @@ $(function() {
         data: {id: last_comment_id}
     })
     .done(function(comments){
-      console.log('OK');
-      console.log(comments);
+        var insertHTML = '';
+        comments.forEach(function(comment){
+          insertHTML = append_comment(comment);
+          $('.comments').append(insertHTML);
+          $('.comments').animate({scrollTop: $('.comments')[0].scrollHeight}, 'fast');
+        });
     })
     .fail(function(){
-      console.log('NG');
-      alert("自動更新に失敗しました")
+      alert("自動更新に失敗しました");
     });
   };
   setInterval(get_data, 5000);
