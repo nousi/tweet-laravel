@@ -37290,16 +37290,16 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 $(function () {
   var get_data = function get_data() {
     $.ajax({
-      url: window.location.host + "/comments",
+      url: "/comments",
+      type: 'GET',
       dataType: "json",
-      success: function success(data) {
-        console.log('OK2');
-        console.log(data);
-      },
-      error: function error() {
-        console.log('OK2');
-        alert("エラーが発生しました");
-      }
+      data: null
+    }).done(function (data) {
+      console.log('OK');
+      console.log(data);
+    }).fail(function () {
+      console.log('NG');
+      alert("自動更新に失敗しました");
     });
   };
 
