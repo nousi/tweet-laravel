@@ -37288,23 +37288,23 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /***/ (function(module, exports) {
 
 $(function () {
-  get_data();
-});
+  var get_data = function get_data() {
+    $.ajax({
+      url: window.location.host + "/comments",
+      dataType: "json",
+      success: function success(data) {
+        console.log('OK2');
+        console.log(data);
+      },
+      error: function error() {
+        console.log('OK2');
+        alert("エラーが発生しました");
+      }
+    });
+  };
 
-function get_data() {
-  console.log(window.location.host + "/comments");
-  $.ajax({
-    url: window.location.host + "/comments",
-    dataType: "json",
-    success: function success(data) {
-      console.log(data);
-    },
-    error: function error() {
-      alert("ajax Error");
-    }
-  });
-  setTimeout("get_data()", 5000);
-}
+  setTimeout(get_data, 5000);
+});
 
 /***/ }),
 
