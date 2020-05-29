@@ -17,5 +17,5 @@ $(function() {
       alert("自動更新に失敗しました")
     });
   };
-  setTimeout(get_data, 5000);
+  setInterval(get_data, 5000);
 });

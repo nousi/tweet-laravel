@@ -37307,7 +37307,7 @@ $(function () {
     });
   };
 
-  setTimeout(get_data, 5000);
+  setInterval(get_data, 5000);
 });
 
 /***/ }),
