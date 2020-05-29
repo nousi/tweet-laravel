@@ -37289,14 +37289,18 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 $(function () {
   var get_data = function get_data() {
+    var last_comment_id = $('.comment:last').data('id');
+    console.log(last_comment_id);
     $.ajax({
       url: "/comments",
       type: 'GET',
       dataType: "json",
-      data: null
-    }).done(function (data) {
+      data: {
+        id: last_comment_id
+      }
+    }).done(function (comments) {
       console.log('OK');
-      console.log(data);
+      console.log(comments);
     }).fail(function () {
       console.log('NG');
       alert("自動更新に失敗しました");

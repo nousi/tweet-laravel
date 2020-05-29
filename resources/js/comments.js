@@ -1,14 +1,16 @@
 $(function() {
   var get_data =function (){
+    var last_comment_id = $('.comment:last').data('id');
+    console.log(last_comment_id);
     $.ajax({
         url: "/comments",
         type: 'GET',
         dataType: "json",
-        data: null
+        data: {id: last_comment_id}
     })
-    .done(function(data){
+    .done(function(comments){
       console.log('OK');
-      console.log(data);
+      console.log(comments);
     })
     .fail(function(){
       console.log('NG');
