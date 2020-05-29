@@ -14,10 +14,11 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $comments = Comment::orderBy('created_at', 'desc')->get();
+        $last_comment_id = $request->id;
+        $comments = Comment::orderBy('created_at', 'asc')->get();
         $json = ["comments" => $comments];
         return response()->json($json);
     }
