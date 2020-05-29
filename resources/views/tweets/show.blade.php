@@ -57,7 +57,7 @@
   
       <tbody>
         @foreach ($tweet->comments as $comment)
-          <tr>
+          <tr class="comment" data-id={{ $comment-id}}>
               <td width="30px">{{ $comment->user->name }}</td>
               <td>{{ $comment->text }}</td>
           </tr>
