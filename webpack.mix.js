@@ -18,3 +18,4 @@ mix.js([
         'resources/js/comments.js',
     ], 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
+    
