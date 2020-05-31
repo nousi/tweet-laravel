@@ -19,12 +19,15 @@ class CommentController extends Controller
         //
         $last_comment_id = $request->id;
         $comment = Comment::find($last_comment_id);
-        $comments = Comment::Where([
-                                    ['tweet_id', '=', $comment->tweet->id],
-                                    ['created_at', '>', $comment->created_at],
-                                ])->orderBy('created_at', 'asc')->get();
-        $json = ["comments" => $comments];
-        return response()->json($json);
+        // $comments = Comment::Where([
+        //                             ['tweet_id', '=', $comment->tweet->id],
+        //                             ['created_at', '>', $comment->created_at],
+        //                         ])->orderBy('created_at', 'asc')->get();
+        $comments = Comment::With(['user'])->where([
+                                                    ['tweet_id', '=', $comment->tweet->id],
+                                                    ['created_at', '>', $comment->created_at],
+                                                    ])->orderBy('created_at', 'asc')->get()->toJson();
+        return $comments;
     }
 
     /**
