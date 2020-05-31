@@ -4981,6 +4981,32 @@ input[type=button].btn-block {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
+  overflow: scroll;
+}
+
+.card-size {
+  width: 100%;
+}
+.card-text {
+  height: 69px;
+  overflow: hidden;
+  position: relative;
+}
+.readmore-content {
+  overflow: hidden;
+  position: relative;
+}
+.readmore-content::before {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  content: "";
+  /*以下グラデーションの色と高さ*/
+  height: 30px;
+  background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.8) 50%, #fff 100%);
+  background: linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.8) 50%, #fff 100%);
 }
 
 .card > hr {
@@ -5102,6 +5128,9 @@ input[type=button].btn-block {
 }
 
 @media (min-width: 576px) {
+  .card-size {
+    width: 300px;
+  }
   .card-deck {
     display: flex;
     flex-flow: row wrap;
@@ -5116,6 +5145,16 @@ input[type=button].btn-block {
     margin-left: 15px;
   }
 }
+
+.card-text {
+  height: 104px;
+}
+
+.readmore-content::before  {
+  /*以下グラデーションの色と高さ*/
+  height: 50px;
+}
+
 
 .card-group > .card {
   margin-bottom: 15px;
