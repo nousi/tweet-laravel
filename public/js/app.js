@@ -37289,33 +37289,40 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 $(function () {
   function append_comment(comment) {
-    var comment = "<tr class=\"comment\" data-id=".concat(comment.id, ">\n          <td width=\"30px\">").concat(comment.user.name, "</td>\n          <td>").concat(comment.text, "}</td>\n        </tr>");
+    var comment = "<tr class=\"comment\" data-id='".concat(comment['id'], "'>\n          <td width=\"30px\">").concat(comment['user']['name'], "</td>\n          <td>").concat(comment['text'], "</td>\n        </tr>");
     return comment;
   }
 
   ;
 
   var get_data = function get_data() {
-    var last_comment_id = $('.comment:last').data('id');
-    $.ajax({
-      url: "/comments",
-      type: 'GET',
-      dataType: "json",
-      data: {
-        id: last_comment_id
-      }
-    }).done(function (comments) {
-      var insertHTML = '';
-      comments.forEach(function (comment) {
-        insertHTML = append_comment(comment);
-        $('.comments').append(insertHTML);
-        $('.comments').animate({
-          scrollTop: $('.comments')[0].scrollHeight
-        }, 'fast');
+    if (window.location.href.match(/\/tweets\/\d+/)) {
+      var last_comment_id = $('.comment:last').data('id');
+      $.ajax({
+        url: "/comments",
+        type: 'GET',
+        dataType: "json",
+        data: {
+          id: last_comment_id
+        }
+      }).done(function (comments) {
+        var insertHTML = '';
+
+        if (comments.length > 0) {
+          for (var i = 0; i < comments.length; i++) {
+            console.log(comments[i]);
+            console.log(comments[i]['text']);
+            insertHTML = append_comment(comments[i]);
+            $('.comments').append(insertHTML);
+            $('.comments').animate({
+              scrollTop: $('.comments')[0].scrollHeight
+            }, 'fast');
+          }
+        }
+      }).fail(function () {
+        alert("自動更新に失敗しました");
       });
-    }).fail(function () {
-      alert("自動更新に失敗しました");
-    });
+    }
   };
 
   setInterval(get_data, 5000);
