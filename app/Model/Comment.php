@@ -4,14 +4,14 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tweet extends Model
+class Comment extends Model
 {
     public function user()
     {
         return $this->belongsTo('App\User');
     }
-    public function comments()
+    public function tweet()
     {
-        return $this->hasMany('App\Model\Comment');
+        return $this->belongsTo('App\Model\Tweet');
     }
 }

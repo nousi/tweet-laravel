@@ -8,6 +8,15 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    public function tweets()
+    {
+        return $this->hasMany('App\Model\Tweet');
+    }
+    public function comments()
+    {
+        return $this->hasMany('App\Model\Comment');
+    }
+    
     use Notifiable;
 
     /**
@@ -36,4 +45,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    
 }
