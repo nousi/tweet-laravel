@@ -37278,6 +37278,17 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/comments.js":
+/*!**********************************!*\
+  !*** ./resources/js/comments.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/Applications/MAMP/htdocs/tweet-laravel/resources/js/comments.js'");
+
+/***/ }),
+
 /***/ "./resources/js/sample.js":
 /*!********************************!*\
   !*** ./resources/js/sample.js ***!
@@ -37322,15 +37333,16 @@ $(document).on(function () {
 /***/ }),
 
 /***/ 0:
-/*!***************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/js/scroll.js ./resources/js/sample.js ./resources/sass/app.scss ***!
-  \***************************************************************************************************************/
+/*!******************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/js/scroll.js ./resources/js/sample.js ./resources/js/comments.js ./resources/sass/app.scss ***!
+  \******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /Applications/MAMP/htdocs/tweet-laravel/resources/js/app.js */"./resources/js/app.js");
 __webpack_require__(/*! /Applications/MAMP/htdocs/tweet-laravel/resources/js/scroll.js */"./resources/js/scroll.js");
 __webpack_require__(/*! /Applications/MAMP/htdocs/tweet-laravel/resources/js/sample.js */"./resources/js/sample.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/tweet-laravel/resources/js/comments.js */"./resources/js/comments.js");
 module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/tweet-laravel/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
