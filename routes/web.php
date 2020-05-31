@@ -15,9 +15,11 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function()
 {
     Route::resource('tweets', 'TweetController', [ 'except' => ['index', 'show']]);
+    Route::resource('tweets.comments', 'CommentController', [ 'except' => ['index','create', 'show']]);
 });
 Route::get('/', 'TweetController@index')->name('root');
 Route::get('/tweets', 'TweetController@index')->name('tweets.index');
 Route::get('tweets/{id}', 'TweetController@show')->name('tweets.show');
+Route::get('comments', 'CommentController@index')->name('comments.index');
 
 Route::get('/home', 'HomeController@index')->name('home');

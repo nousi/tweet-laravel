@@ -15,5 +15,6 @@ mix.js([
         'resources/js/app.js',
         'resources/js/scroll.js',
         'resources/js/sample.js',
+        'resources/js/comments.js',
     ], 'public/js')
     .sass('resources/sass/app.scss', 'public/css');

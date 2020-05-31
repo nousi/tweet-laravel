@@ -27,4 +27,47 @@
     </div>
   </div>
 </div>
+<div class="container">
+  @if (Auth::check())
+  <form method="POST" action="{{ route('tweets.comments.store', $tweet) }}">
+    @csrf
+    <div class="form-group mt-1">
+      <input id="text" type="text" class="form-control @error('text') is-invalid @enderror" placeholder="コメントを入力" name="text" value="{{ old('text') }}" required autocomplete="text" autofocus>
+      <div class="col-md-6">
+          @error('text')
+                <div class="alert alert-danger">{{ $message }}</div>
+          @enderror
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">
+        投稿する
+    </button>
+        </div>
+    </div>
+  </form>
+  @endif
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">name</th>
+          <th scope="col">comment</th>
+        </tr>
+      </thead>
+  
+      <tbody class="comments">
+        @foreach ($tweet->comments as $comment)
+          <tr class="comment" data-id={{ $comment->id}}>
+              <td width="30px">{{ $comment->user->name }}</td>
+              <td>{{ $comment->text }}</td>
+          </tr>
+        @endforeach
+      </tbody>
+    </table>
+
+  </div>
+</div>
+@endsection
+
+@section('js')
 @endsection
