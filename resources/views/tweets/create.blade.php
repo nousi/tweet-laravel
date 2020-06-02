@@ -10,12 +10,22 @@
 @section('content')
 <form method="POST" action="{{ route('tweets.store') }}">
   @csrf
-
+  
+  <div class="form-group row">
+      <label for="title" class="col-md-4 col-form-label text-md-right">写真</label>
+      
+      <div class="col-md-6">
+          <input id="photo" type="file" name="photo" class="form-control @error('photo') is-invalid @enderror" value="{{ old('photo') }}" required autocomplete="phpto" autofocus>
+          @error('photo')
+                <div class="alert alert-danger">{{ $message }}</div>
+          @enderror
+      </div>
+  </div>
   <div class="form-group row">
       <label for="title" class="col-md-4 col-form-label text-md-right">タイトル</label>
 
       <div class="col-md-6">
-          <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="title" autofocus>
+          <input id="name" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="title" autofocus>
           @error('title')
                 <div class="alert alert-danger">{{ $message }}</div>
           @enderror
