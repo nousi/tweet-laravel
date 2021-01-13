@@ -19,7 +19,7 @@ class TweetController extends Controller
     {
         //
         $tweets = DB::table('tweets')
-                 ->get();
+            ->get();
         return view('tweets.index', compact('tweets'));
     }
 
@@ -43,14 +43,17 @@ class TweetController extends Controller
     public function store(StoreTweet $request)
     {
         //
+
         $user = Auth::user();
         $tweet = new Tweet;
         $tweet->title = $request->input('title');
         $tweet->text = $request->input('text');
         $tweet->user_id = $user->id;
+        $imagepath = $request->image->store('public');
+        dd($imagepath);
+        $tweet->image = str_replace('public/', '', $imagepath);
         $tweet->save();
         return redirect(route('tweets.index'));
-
     }
 
     /**
@@ -76,7 +79,7 @@ class TweetController extends Controller
     public function edit(Tweet $tweet)
     {
         //
-        
+
         $user = Auth::user();
         if ($user->id === $tweet->user_id) {
             return view('tweets.edit', compact('tweet'));
