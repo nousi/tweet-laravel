@@ -15,12 +15,13 @@ class CreateTweetsTable extends Migration
     {
         Schema::create('tweets', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title',45);
+            $table->string('title', 45);
             $table->text('text', 400);
+            $table->unsignedBigInteger('image');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')
-                  ->on('users')
-                  ->onDelete('cascade');
+                ->on('users')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
