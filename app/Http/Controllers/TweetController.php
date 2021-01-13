@@ -20,8 +20,8 @@ class TweetController extends Controller
     {
         //
         $tweets = DB::table('tweets')
-                ->orderBy('created_at', 'desc')
-                ->paginate(20);
+            ->orderBy('created_at', 'desc')
+            ->paginate(20);
         return view('tweets.index', compact('tweets'));
     }
 
@@ -52,7 +52,6 @@ class TweetController extends Controller
         $tweet->user_id = $user->id;
         $tweet->save();
         return redirect(route('tweets.index'));
-
     }
 
     /**
@@ -78,7 +77,7 @@ class TweetController extends Controller
     public function edit(Tweet $tweet)
     {
         //
-        
+
         $user = Auth::user();
         if ($user->id === $tweet->user_id) {
             return view('tweets.edit', compact('tweet'));

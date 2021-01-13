@@ -24,9 +24,9 @@ class CommentController extends Controller
         //                             ['created_at', '>', $comment->created_at],
         //                         ])->orderBy('created_at', 'asc')->get();
         $comments = Comment::With(['user'])->where([
-                                                    ['tweet_id', '=', $comment->tweet->id],
-                                                    ['created_at', '>', $comment->created_at],
-                                                    ])->orderBy('created_at', 'asc')->get()->toJson();
+            ['tweet_id', '=', $comment->tweet->id],
+            ['created_at', '>', $comment->created_at],
+        ])->orderBy('created_at', 'asc')->get()->toJson();
         return $comments;
     }
 
@@ -58,12 +58,10 @@ class CommentController extends Controller
             $comment->user_id = $user->id;
             $comment->save();
             return back()->with('flash_message', 'コメントを投稿しました。');
-            
         } else {
             // ログインしていなかったら、ロールバック
             return back()->with('flash_message', 'コメントするにはログインする必要があります');
         }
-        
     }
 
     /**
