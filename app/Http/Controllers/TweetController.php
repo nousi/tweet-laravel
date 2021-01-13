@@ -50,6 +50,8 @@ class TweetController extends Controller
         $tweet->title = $request->input('title');
         $tweet->text = $request->input('text');
         $tweet->user_id = $user->id;
+        $filename = $request->file('image')->store('public');
+        $tweet->image = str_replace('public/', '', $filename);
         $tweet->save();
         return redirect(route('tweets.index'));
     }
